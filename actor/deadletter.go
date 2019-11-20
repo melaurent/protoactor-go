@@ -16,7 +16,7 @@ var (
 func init() {
 	deadLetterSubscriber = eventstream.Subscribe(func(msg interface{}) {
 		if deadLetter, ok := msg.(*DeadLetterEvent); ok {
-			plog.Debug("[DeadLetter]", log.Stringer("pid", deadLetter.PID), log.Message(reflect.TypeOf(deadLetter.Message).String()), log.Stringer("sender", deadLetter.Sender))
+			plog.Debug("[DeadLetter]", log.Stringer("pid", deadLetter.PID), log.String("type", reflect.TypeOf(deadLetter.Message).String()), log.Stringer("sender", deadLetter.Sender))
 		}
 	})
 

@@ -31,3 +31,5 @@ require (
 	gopkg.in/couchbaselabs/gocbconnstr.v1 v1.0.2 // indirect
 	gopkg.in/couchbaselabs/jsonx.v1 v1.0.0 // indirect
 )
+
+go 1.13
