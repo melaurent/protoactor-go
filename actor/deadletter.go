@@ -3,6 +3,7 @@ package actor
 import (
 	"github.com/AsynkronIT/protoactor-go/eventstream"
 	"github.com/AsynkronIT/protoactor-go/log"
+	"reflect"
 )
 
 type deadLetterProcess struct{}
@@ -15,7 +16,7 @@ var (
 func init() {
 	deadLetterSubscriber = eventstream.Subscribe(func(msg interface{}) {
 		if deadLetter, ok := msg.(*DeadLetterEvent); ok {
-			plog.Debug("[DeadLetter]", log.Stringer("pid", deadLetter.PID), log.Message(deadLetter.Message), log.Stringer("sender", deadLetter.Sender))
+			plog.Debug("[DeadLetter]", log.Stringer("pid", deadLetter.PID), log.Message(reflect.TypeOf(deadLetter.Message).String()), log.Stringer("sender", deadLetter.Sender))
 		}
 	})
 
